@@ -107,9 +107,8 @@ const enableLogging = opt => {
  */
 const getLinks = async opt => {
   const { page } = opt;
-  const skipSel = "[data-no-snap]"
   const anchors = await page.evaluate(() =>
-    Array.from(document.querySelectorAll(`a:not(${skipSel}),link[rel='alternate']:not(${skipSel})`)).map(anchor => {
+    Array.from(document.querySelectorAll(`a:not([data-no-snap]),link[rel='alternate']:not([data-no-snap])`)).map(anchor => {
       if (anchor.href.baseVal) {
         const a = document.createElement("a");
         a.href = anchor.href.baseVal;
